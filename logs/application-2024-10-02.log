@@ -1,0 +1,209 @@
+2024-10-02 11:40:44.043 [main] INFO  com.practice.QLTV.QltvApplication - Starting QltvApplication using Java 17.0.12 with PID 19248 (C:\Users\Admin\Documents\QLTV\QLTV\target\classes started by Admin in C:\Users\Admin\Documents\QLTV\QLTV)
+2024-10-02 11:40:44.046 [main] INFO  com.practice.QLTV.QltvApplication - No active profile set, falling back to 1 default profile: "default"
+2024-10-02 11:40:45.699 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-02 11:40:45.804 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 94 ms. Found 10 JPA repository interfaces.
+2024-10-02 11:40:46.762 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-10-02 11:40:46.777 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-10-02 11:40:46.780 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-10-02 11:40:46.781 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-02 11:40:46.845 [main] INFO  o.a.c.c.C.[.[localhost].[/QLTV] - Initializing Spring embedded WebApplicationContext
+2024-10-02 11:40:46.845 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2755 ms
+2024-10-02 11:40:47.057 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-02 11:40:47.152 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-02 11:40:47.192 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-10-02 11:40:47.685 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-02 11:40:47.717 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-10-02 11:40:48.413 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3aab42d6
+2024-10-02 11:40:48.415 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-10-02 11:40:49.786 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-02 11:40:50.220 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-02 11:40:50.843 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-02 11:40:51.639 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-10-02 11:40:51.664 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/QLTV'
+2024-10-02 11:40:51.688 [main] INFO  com.practice.QLTV.QltvApplication - Started QltvApplication in 8.181 seconds (process running for 9.204)
+2024-10-02 11:41:53.315 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[.[localhost].[/QLTV] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-02 11:41:53.315 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-10-02 11:41:53.317 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2024-10-02 11:42:26.801 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-02 11:42:26.801 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-10-02 11:42:26.833 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-10-02 11:42:32.039 [main] INFO  com.practice.QLTV.QltvApplication - Starting QltvApplication using Java 17.0.12 with PID 11420 (C:\Users\Admin\Documents\QLTV\QLTV\target\classes started by Admin in C:\Users\Admin\Documents\QLTV\QLTV)
+2024-10-02 11:42:32.044 [main] INFO  com.practice.QLTV.QltvApplication - No active profile set, falling back to 1 default profile: "default"
+2024-10-02 11:42:33.041 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-02 11:42:33.184 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 136 ms. Found 10 JPA repository interfaces.
+2024-10-02 11:42:33.887 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-10-02 11:42:33.900 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-10-02 11:42:33.902 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-10-02 11:42:33.903 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-02 11:42:33.962 [main] INFO  o.a.c.c.C.[.[localhost].[/QLTV] - Initializing Spring embedded WebApplicationContext
+2024-10-02 11:42:33.962 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1879 ms
+2024-10-02 11:42:34.173 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-02 11:42:34.279 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-02 11:42:34.327 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-10-02 11:42:34.776 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-02 11:42:34.810 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-10-02 11:42:35.202 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4ff0706c
+2024-10-02 11:42:35.205 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-10-02 11:42:36.553 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-02 11:42:36.791 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-02 11:42:37.520 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-02 11:42:38.502 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-10-02 11:42:38.529 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/QLTV'
+2024-10-02 11:42:38.538 [main] INFO  com.practice.QLTV.QltvApplication - Started QltvApplication in 6.9 seconds (process running for 7.664)
+2024-10-02 11:43:37.647 [http-nio-8080-exec-3] INFO  o.a.c.c.C.[.[localhost].[/QLTV] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-02 11:43:37.647 [http-nio-8080-exec-3] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-10-02 11:43:37.649 [http-nio-8080-exec-3] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-10-02 11:45:55.494 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-02 11:45:55.502 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-10-02 11:45:55.539 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-10-02 13:45:37.968 [main] INFO  com.practice.QLTV.QltvApplication - Starting QltvApplication using Java 17.0.12 with PID 21744 (C:\Users\Admin\Documents\QLTV\QLTV\target\classes started by Admin in C:\Users\Admin\Documents\QLTV\QLTV)
+2024-10-02 13:45:37.979 [main] INFO  com.practice.QLTV.QltvApplication - No active profile set, falling back to 1 default profile: "default"
+2024-10-02 13:45:41.361 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-02 13:45:41.737 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 341 ms. Found 10 JPA repository interfaces.
+2024-10-02 13:45:43.644 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-10-02 13:45:43.693 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-10-02 13:45:43.726 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-10-02 13:45:43.728 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-02 13:45:44.040 [main] INFO  o.a.c.c.C.[.[localhost].[/QLTV] - Initializing Spring embedded WebApplicationContext
+2024-10-02 13:45:44.041 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 5920 ms
+2024-10-02 13:45:44.679 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-02 13:45:44.901 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-02 13:45:45.078 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-10-02 13:45:46.527 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-02 13:45:46.682 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-10-02 13:45:48.496 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5ac0bf84
+2024-10-02 13:45:48.509 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-10-02 13:45:55.351 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-02 13:45:56.461 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-02 13:45:59.635 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-02 13:46:03.796 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-10-02 13:46:03.911 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/QLTV'
+2024-10-02 13:46:03.943 [main] INFO  com.practice.QLTV.QltvApplication - Started QltvApplication in 28.128 seconds (process running for 31.125)
+2024-10-02 13:46:37.099 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[.[localhost].[/QLTV] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-02 13:46:37.099 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-10-02 13:46:37.099 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2024-10-02 13:48:52.827 [http-nio-8080-exec-7] INFO  c.p.QLTV.Controller.UserController - Username : Admin
+2024-10-02 13:50:27.513 [http-nio-8080-exec-2] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 2389 ms
+2024-10-02 13:54:37.791 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-02 13:54:37.816 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-10-02 13:54:37.901 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-10-02 14:26:07.288 [main] INFO  com.practice.QLTV.QltvApplication - Starting QltvApplication using Java 17.0.12 with PID 4104 (C:\Users\Admin\Documents\QLTV\QLTV\target\classes started by Admin in C:\Users\Admin\Documents\QLTV\QLTV)
+2024-10-02 14:26:07.288 [main] INFO  com.practice.QLTV.QltvApplication - No active profile set, falling back to 1 default profile: "default"
+2024-10-02 14:26:09.553 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-02 14:26:09.726 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 157 ms. Found 10 JPA repository interfaces.
+2024-10-02 14:26:10.853 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-10-02 14:26:10.864 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-10-02 14:26:10.879 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-10-02 14:26:10.879 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-02 14:26:11.005 [main] INFO  o.a.c.c.C.[.[localhost].[/QLTV] - Initializing Spring embedded WebApplicationContext
+2024-10-02 14:26:11.005 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3610 ms
+2024-10-02 14:26:11.511 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-02 14:26:11.749 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-02 14:26:11.843 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-10-02 14:26:12.681 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-02 14:26:12.760 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-10-02 14:26:14.030 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2052f095
+2024-10-02 14:26:14.035 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-10-02 14:26:16.453 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-02 14:26:17.219 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-02 14:26:18.807 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-02 14:26:20.507 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-10-02 14:26:20.556 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/QLTV'
+2024-10-02 14:26:20.575 [main] INFO  com.practice.QLTV.QltvApplication - Started QltvApplication in 14.176 seconds (process running for 15.677)
+2024-10-02 14:26:44.562 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[.[localhost].[/QLTV] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-02 14:26:44.562 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-10-02 14:26:44.562 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2024-10-02 14:26:44.848 [http-nio-8080-exec-1] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'PUT' is not supported]
+2024-10-02 14:26:52.353 [http-nio-8080-exec-3] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'PUT' is not supported]
+2024-10-02 14:27:37.642 [http-nio-8080-exec-4] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 1043 ms
+2024-10-02 14:39:31.617 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-02 14:39:31.743 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-10-02 14:39:32.109 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-10-02 14:39:41.831 [main] INFO  com.practice.QLTV.QltvApplication - Starting QltvApplication using Java 17.0.12 with PID 2412 (C:\Users\Admin\Documents\QLTV\QLTV\target\classes started by Admin in C:\Users\Admin\Documents\QLTV\QLTV)
+2024-10-02 14:39:41.835 [main] INFO  com.practice.QLTV.QltvApplication - No active profile set, falling back to 1 default profile: "default"
+2024-10-02 14:39:43.987 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-02 14:39:44.150 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 152 ms. Found 10 JPA repository interfaces.
+2024-10-02 14:39:45.495 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-10-02 14:39:45.515 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-10-02 14:39:45.519 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-10-02 14:39:45.520 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-02 14:39:45.645 [main] INFO  o.a.c.c.C.[.[localhost].[/QLTV] - Initializing Spring embedded WebApplicationContext
+2024-10-02 14:39:45.646 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3693 ms
+2024-10-02 14:39:45.920 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-02 14:39:46.020 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-02 14:39:46.068 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-10-02 14:39:46.457 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-02 14:39:46.492 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-10-02 14:39:47.086 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3d8bd881
+2024-10-02 14:39:47.092 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-10-02 14:39:48.725 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-02 14:39:49.009 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-02 14:39:50.023 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-02 14:39:51.071 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-10-02 14:39:51.103 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/QLTV'
+2024-10-02 14:39:51.112 [main] INFO  com.practice.QLTV.QltvApplication - Started QltvApplication in 10.26 seconds (process running for 11.851)
+2024-10-02 14:40:14.039 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[.[localhost].[/QLTV] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-02 14:40:14.039 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-10-02 14:40:14.046 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 7 ms
+2024-10-02 14:44:29.563 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-02 14:44:29.607 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-10-02 14:44:29.692 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-10-02 14:44:35.725 [main] INFO  com.practice.QLTV.QltvApplication - Starting QltvApplication using Java 17.0.12 with PID 16920 (C:\Users\Admin\Documents\QLTV\QLTV\target\classes started by Admin in C:\Users\Admin\Documents\QLTV\QLTV)
+2024-10-02 14:44:35.728 [main] INFO  com.practice.QLTV.QltvApplication - No active profile set, falling back to 1 default profile: "default"
+2024-10-02 14:44:36.747 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-02 14:44:36.845 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 89 ms. Found 10 JPA repository interfaces.
+2024-10-02 14:44:37.459 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-10-02 14:44:37.469 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-10-02 14:44:37.474 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-10-02 14:44:37.474 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-02 14:44:37.537 [main] INFO  o.a.c.c.C.[.[localhost].[/QLTV] - Initializing Spring embedded WebApplicationContext
+2024-10-02 14:44:37.537 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1763 ms
+2024-10-02 14:44:37.736 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-02 14:44:37.871 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-02 14:44:37.950 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-10-02 14:44:38.335 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-02 14:44:38.364 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-10-02 14:44:38.841 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@731ab49b
+2024-10-02 14:44:38.844 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-10-02 14:44:40.268 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-02 14:44:40.581 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-02 14:44:41.433 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-02 14:44:42.657 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-10-02 14:44:42.688 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/QLTV'
+2024-10-02 14:44:42.696 [main] INFO  com.practice.QLTV.QltvApplication - Started QltvApplication in 7.427 seconds (process running for 8.299)
+2024-10-02 14:44:52.315 [http-nio-8080-exec-7] INFO  o.a.c.c.C.[.[localhost].[/QLTV] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-02 14:44:52.316 [http-nio-8080-exec-7] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-10-02 14:44:52.319 [http-nio-8080-exec-7] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2024-10-02 14:47:30.752 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-02 14:47:30.757 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-10-02 14:47:30.827 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-10-02 15:11:50.007 [main] INFO  com.practice.QLTV.QltvApplication - Starting QltvApplication using Java 17.0.12 with PID 14384 (C:\Users\Admin\Documents\QLTV\QLTV\target\classes started by Admin in C:\Users\Admin\Documents\QLTV\QLTV)
+2024-10-02 15:11:50.010 [main] INFO  com.practice.QLTV.QltvApplication - No active profile set, falling back to 1 default profile: "default"
+2024-10-02 15:11:51.293 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-02 15:11:51.443 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 140 ms. Found 10 JPA repository interfaces.
+2024-10-02 15:11:52.160 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-10-02 15:11:52.172 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-10-02 15:11:52.175 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-10-02 15:11:52.176 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-02 15:11:52.241 [main] INFO  o.a.c.c.C.[.[localhost].[/QLTV] - Initializing Spring embedded WebApplicationContext
+2024-10-02 15:11:52.241 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2186 ms
+2024-10-02 15:11:52.410 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-02 15:11:52.492 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-02 15:11:52.603 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-10-02 15:11:53.064 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-02 15:11:53.106 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-10-02 15:11:53.567 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3aab42d6
+2024-10-02 15:11:53.570 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-10-02 15:11:54.997 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-02 15:11:55.297 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-02 15:11:55.909 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-02 15:11:56.788 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-10-02 15:11:56.807 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/QLTV'
+2024-10-02 15:11:56.817 [main] INFO  com.practice.QLTV.QltvApplication - Started QltvApplication in 7.281 seconds (process running for 8.331)
+2024-10-02 15:12:39.711 [http-nio-8080-exec-3] INFO  o.a.c.c.C.[.[localhost].[/QLTV] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-02 15:12:39.712 [http-nio-8080-exec-3] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-10-02 15:12:39.713 [http-nio-8080-exec-3] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-10-02 15:15:23.702 [http-nio-8080-exec-4] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 1319 ms
+2024-10-02 15:15:45.719 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-02 15:15:45.724 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-10-02 15:15:45.772 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

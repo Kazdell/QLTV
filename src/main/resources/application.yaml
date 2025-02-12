@@ -1,0 +1,51 @@
+server:
+  port: 6060
+  servlet:
+    context-path: /QLTV
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs   # Đường dẫn đến tài liệu OpenAPI (API documentation)
+  swagger-ui:
+    path: /swagger-ui.html  # Đường dẫn đến giao diện Swagger UI
+    operations-sorter: alpha  # Sắp xếp các API theo thứ tự chữ cái
+    display-request-duration: true  # Hiển thị thời gian yêu cầu (request duration)
+    doc-expansion: none  # Thu gọn các API (collapse) khi mở Swagger UI
+    filter: true  # Kích hoạt bộ lọc để tìm kiếm nhanh các endpoint trong Swagger UI
+
+spring:
+  datasource:
+    url: "jdbc:mysql://localhost:3306/QLTV"
+    username: root
+    password: 1234
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
+  application:
+    name: LibraryManager
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+
+logging:
+  level:
+    root: info
+    org.springframework: info
+    com.practice.QLTV: debug  # Tùy chỉnh mức độ log cho package của bạn
+  file:
+    path: ./logs/application.log  # Đường dẫn file log
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+
+
+jwt :
+  signerKey: "TtE88A8rTVfSN0nPgLw3qIGiUtHeEOSVNkxeBusMllGWWg1N5jXoF+J2oRE8cwSS"
+  valid-duration: 3600
+  refreshable-duration: 36000

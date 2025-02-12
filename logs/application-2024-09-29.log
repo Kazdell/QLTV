@@ -1,0 +1,30 @@
+2024-09-29 21:51:47.633 [main] INFO  com.practice.QLTV.QltvApplication - Starting QltvApplication using Java 17.0.12 with PID 10412 (C:\Users\Admin\Documents\QLTV\QLTV\target\classes started by Admin in C:\Users\Admin\Documents\QLTV\QLTV)
+2024-09-29 21:51:47.633 [main] INFO  com.practice.QLTV.QltvApplication - No active profile set, falling back to 1 default profile: "default"
+2024-09-29 21:51:49.105 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-29 21:51:49.251 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 135 ms. Found 10 JPA repository interfaces.
+2024-09-29 21:51:50.384 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-09-29 21:51:50.405 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-09-29 21:51:50.409 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-09-29 21:51:50.409 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-09-29 21:51:50.523 [main] INFO  o.a.c.c.C.[.[localhost].[/QLTV] - Initializing Spring embedded WebApplicationContext
+2024-09-29 21:51:50.523 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2815 ms
+2024-09-29 21:51:50.823 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-29 21:51:50.984 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-09-29 21:51:51.105 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-09-29 21:51:52.433 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-29 21:51:52.530 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-09-29 21:51:53.859 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1f85904a
+2024-09-29 21:51:53.867 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-09-29 21:52:00.507 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-29 21:52:01.471 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-29 21:52:04.299 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-29 21:52:09.220 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-09-29 21:52:09.296 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/QLTV'
+2024-09-29 21:52:09.333 [main] INFO  com.practice.QLTV.QltvApplication - Started QltvApplication in 22.391 seconds (process running for 24.236)
+2024-09-29 21:56:24.795 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[.[localhost].[/QLTV] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-09-29 21:56:24.807 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-09-29 21:56:25.077 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 266 ms
+2024-09-29 21:57:05.455 [http-nio-8080-exec-3] INFO  c.p.QLTV.Controller.UserController - Username : Admin
+2024-09-29 21:58:47.947 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-29 21:58:47.972 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-09-29 21:58:48.123 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
