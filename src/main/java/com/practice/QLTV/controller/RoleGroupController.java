@@ -1,54 +1,38 @@
 package com.practice.QLTV.controller;
 
-import com.practice.QLTV.dto.request.RoleGroupRequest;
-import com.practice.QLTV.dto.response.RoleGroupResponse;
-import com.practice.QLTV.entity.RoleGroup;
+import com.practice.QLTV.dto.RoleGroupDTO;
 import com.practice.QLTV.service.RoleGroupService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@Slf4j
-@RequiredArgsConstructor
 @RequestMapping("/api/roles")
+@RequiredArgsConstructor
 public class RoleGroupController {
 
-    private final RoleGroupService roleGroupService;
+    private final RoleGroupService roleService;
 
     @PostMapping
-    public ResponseEntity<RoleGroupResponse> createRoleGroup(@RequestBody @Validated RoleGroupRequest request) {
-        RoleGroupResponse response = roleGroupService.createRoleGroup(request);
-        return ResponseEntity.ok(response);
+    public ResponseEntity<RoleGroupDTO> createRole(@RequestBody RoleGroupDTO roleDTO) {
+        return ResponseEntity.ok(roleService.createRole(roleDTO));
     }
 
     @GetMapping
-    public ResponseEntity<List<RoleGroup>> getAllRoleGroups() {
-        List<RoleGroup> roleGroups = roleGroupService.getAllRoleGroups();
-        return ResponseEntity.ok(roleGroups);
+    public ResponseEntity<List<RoleGroupDTO>> getAllRoles() {
+        return ResponseEntity.ok(roleService.getAllRoles());
     }
 
-    @GetMapping("/{roleGroupCode}")
-    public ResponseEntity<RoleGroupResponse> getRoleGroupByCode(@PathVariable String roleGroupCode) {
-        RoleGroupResponse response = roleGroupService.getRoleGroupByCode(roleGroupCode);
-        return ResponseEntity.ok(response);
+    @GetMapping("/{id}")
+    public ResponseEntity<RoleGroupDTO> getRoleById(@PathVariable Integer id) {
+        return ResponseEntity.ok(roleService.getRoleById(id));
     }
 
-    @PutMapping("/{roleGroupCode}")
-    public ResponseEntity<RoleGroupResponse> updateRoleGroup(
-            @PathVariable String roleGroupCode,
-            @RequestBody @Validated RoleGroupRequest request) {
-        RoleGroupResponse response = roleGroupService.updateRoleGroup(roleGroupCode, request);
-        return ResponseEntity.ok(response);
-    }
-
-    @DeleteMapping("/{roleGroupCode}")
-    public ResponseEntity<String> deleteRoleGroup(@PathVariable String roleGroupCode) {
-        String message = roleGroupService.deleteRoleGroup(roleGroupCode);
-        return ResponseEntity.ok(message);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteRole(@PathVariable Integer id) {
+        roleService.deleteRole(id);
+        return ResponseEntity.noContent().build();
     }
 }
