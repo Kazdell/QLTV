@@ -6,4 +6,5 @@ import java.util.List;
 public interface FunctionService {
     FunctionDTO createFunction(FunctionDTO functionDTO);
     List<FunctionDTO> getAllFunctions();
+    FunctionDTO getFunctionByCode(String functionCode);
 }

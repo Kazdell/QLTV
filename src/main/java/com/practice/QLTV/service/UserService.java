@@ -6,19 +6,32 @@ import com.practice.QLTV.dto.request.UserUpdateRequest;
 import com.practice.QLTV.dto.response.ApiResponse;
 import com.practice.QLTV.dto.response.PageResponse;
 import com.practice.QLTV.dto.response.UserResponse;
-import com.practice.QLTV.entity.User;
+import org.springframework.data.domain.Pageable;
 
 public interface UserService {
-    UserResponse getUserById(int id);
-    PageResponse<UserResponse> getAllUserActive(int page, int size, String sortBy, String sortDirection);
-    PageResponse<UserResponse>  getAllUserDeleted(int page, int size, String sortBy, String sortDirection);
-    PageResponse<UserResponse>  getAllUserBanned(int page, int size, String sortBy, String sortDirection);
-    ApiResponse<String> activeUserById(int id);
-    ApiResponse<String> deleteUserById(int id);
-    ApiResponse<String> banUserById(int id);
-    UserResponse createUser(UserCreationRequest creationRequest);
-    UserResponse updateUser(UserUpdateRequest updateRequest, int id);
-    PageResponse<UserResponse> searchUser(int page, int size, String sortBy, String sortDirection, UserSearchingRequest searchingRequest);
-    PageResponse<UserResponse> searchAdvancedUser(int page, int size, String sortBy, String sortDirection, String keyword);
-    User MyInfo();
+    ApiResponse<UserResponse> getUserById(Integer id);
+    ApiResponse<PageResponse<UserResponse>> getAllUsersByStatus(Pageable pageable, UserStatus status);
+    ApiResponse<UserResponse> updateUserStatus(Integer id, UserStatus newStatus); // Changed from String
+    ApiResponse<UserResponse> createUser(UserCreationRequest request);
+    ApiResponse<UserResponse> updateUser(Integer id, UserUpdateRequest request);
+    ApiResponse<PageResponse<UserResponse>> searchUsers(Pageable pageable, UserSearchingRequest criteria);
+    ApiResponse<PageResponse<UserResponse>> searchAdvancedUsers(Pageable pageable, String keyword);
+    ApiResponse<UserResponse> getCurrentUserInfo(); // Changed from User
+
+    enum UserStatus {
+        ACTIVE(true, false),
+        BANNED(false, false),
+        DELETED(false, true);
+
+        private final boolean isActive;
+        private final boolean isDeleted;
+
+        UserStatus(boolean isActive, boolean isDeleted) {
+            this.isActive = isActive;
+            this.isDeleted = isDeleted;
+        }
+
+        public boolean getIsActive() { return isActive; }
+        public boolean getIsDeleted() { return isDeleted; }
+    }
 }

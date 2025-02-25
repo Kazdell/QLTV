@@ -3,88 +3,71 @@ package com.practice.QLTV.exception;
 import com.practice.QLTV.dto.response.ApiResponse;
 import jakarta.validation.ConstraintViolation;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import java.util.Map;
-import java.util.Objects;
+import java.util.stream.Collectors;
 
 @ControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
+    private final MessageSource messageSource;
 
-    private static final String MIN_ATTRIBUTE = "min";
-
-    @ExceptionHandler(value = Exception.class)
-    ResponseEntity<ApiResponse> handlingRuntimeException(RuntimeException exception) {
-        log.error("Exception: ", exception);
-        ApiResponse apiResponse = new ApiResponse();
-
-        apiResponse.setCode(ErrorCode.UNCATEGORIZED_EXCEPTION.getCode());
-        apiResponse.setMessage(ErrorCode.UNCATEGORIZED_EXCEPTION.getMessage());
-
-        return ResponseEntity.badRequest().body(apiResponse);
+    public GlobalExceptionHandler(MessageSource messageSource) {
+        this.messageSource = messageSource;
     }
 
-    @ExceptionHandler(value = AppException.class)
-    ResponseEntity<ApiResponse> handlingAppException(AppException exception) {
-        ErrorCode errorCode = exception.getErrorCode();
-        ApiResponse apiResponse = new ApiResponse();
-
-        apiResponse.setCode(errorCode.getCode());
-        apiResponse.setMessage(errorCode.getMessage());
-
-        return ResponseEntity.status(errorCode.getStatusCode()).body(apiResponse);
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ApiResponse<Void>> handleException(Exception ex) {
+        log.error("Unexpected error: ", ex);
+        return createErrorResponse(ErrorCode.UNCATEGORIZED_EXCEPTION);
     }
 
-    @ExceptionHandler(value = AccessDeniedException.class)
-    ResponseEntity<ApiResponse> handlingAccessDeniedException(AccessDeniedException exception) {
-        ErrorCode errorCode = ErrorCode.UNAUTHORIZED;
-
-        return ResponseEntity.status(errorCode.getStatusCode())
-                .body(ApiResponse.builder()
-                        .code(errorCode.getCode())
-                        .message(errorCode.getMessage())
-                        .build());
+    @ExceptionHandler(AppException.class)
+    public ResponseEntity<ApiResponse<Void>> handleAppException(AppException ex) {
+        log.error("Application error: {}", ex.getMessage());
+        String message = formatMessage(ex.getErrorCode().getMessage(), ex.getArgs());
+        return createErrorResponse(ex.getErrorCode(), message);
     }
 
-    @ExceptionHandler(value = MethodArgumentNotValidException.class)
-    ResponseEntity<ApiResponse> handlingValidation(MethodArgumentNotValidException exception) {
-        String enumKey = exception.getFieldError().getDefaultMessage();
-
-        ErrorCode errorCode = ErrorCode.INVALID_KEY;
-        Map<String, Object> attributes = null;
-        try {
-            errorCode = ErrorCode.valueOf(enumKey);
-
-            var constraintViolation =
-                    exception.getBindingResult().getAllErrors().get(0).unwrap(ConstraintViolation.class);
-
-            attributes = constraintViolation.getConstraintDescriptor().getAttributes();
-
-            log.info(attributes.toString());
-
-        } catch (IllegalArgumentException e) {
-            // Handle the exception
-        }
-
-        ApiResponse apiResponse = new ApiResponse();
-
-        apiResponse.setCode(errorCode.getCode());
-        apiResponse.setMessage(
-                Objects.nonNull(attributes)
-                        ? mapAttribute(errorCode.getMessage(), attributes)
-                        : errorCode.getMessage());
-
-        return ResponseEntity.badRequest().body(apiResponse);
+    @ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<ApiResponse<Void>> handleAccessDeniedException(AccessDeniedException ex) {
+        log.error("Access denied: ", ex);
+        return createErrorResponse(ErrorCode.UNAUTHORIZED);
     }
 
-    private String mapAttribute(String message, Map<String, Object> attributes) {
-        String minValue = String.valueOf(attributes.get(MIN_ATTRIBUTE));
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ApiResponse<Void>> handleValidationException(MethodArgumentNotValidException ex) {
+        String message = ex.getBindingResult().getFieldErrors().stream()
+                .map(error -> error.getField() + ": " + error.getDefaultMessage())
+                .collect(Collectors.joining(", "));
+        return createErrorResponse(ErrorCode.INVALID_REQUEST_FORMAT, message);
+    }
 
-        return message.replace("{" + MIN_ATTRIBUTE + "}", minValue);
+    private ResponseEntity<ApiResponse<Void>> createErrorResponse(ErrorCode errorCode) {
+        return createErrorResponse(errorCode, errorCode.getMessage());
+    }
+
+    private ResponseEntity<ApiResponse<Void>> createErrorResponse(ErrorCode errorCode, String message) {
+        ApiResponse<Void> response = ApiResponse.<Void>builder()
+                .code(errorCode.getCode())
+                .message(message)
+                .result(null)
+                .build();
+        return ResponseEntity.status(errorCode.getStatusCode()).body(response);
+    }
+
+    private String formatMessage(String template, Object... args) {
+        return messageSource.getMessage(
+                template,
+                args,
+                template,
+                LocaleContextHolder.getLocale()
+        );
     }
 }

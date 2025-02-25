@@ -62,8 +62,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     Optional<User> findByUsername(String username);
 
-    boolean existsByUsername(String username);
-
     @Query("SELECT i.phoneNumber FROM User i")
     List<String> findAllPhoneNumber();
 
@@ -76,6 +74,14 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query("SELECT i.identityNumber FROM User i")
     List<String> findAllIdentityNumbers();
 
-    public boolean existsByPhoneNumber(String phoneNumber);
-    public boolean existsByEmail(String email);
+    boolean existsByUsername(String username);
+
+    boolean existsByPhoneNumber(String phoneNumber);
+
+    boolean existsByEmail(String email);
+
+    boolean existsByIdentityNumber(String identityNumber);
+
+
+
 }

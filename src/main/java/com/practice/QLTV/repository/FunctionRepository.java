@@ -9,4 +9,5 @@ import java.util.Optional;
 @Repository
 public interface FunctionRepository extends JpaRepository<Function, Integer> {
     Optional<Function> findByFunctionCode(String functionCode);
+    boolean existsByFunctionCode(String functionCode);
 }

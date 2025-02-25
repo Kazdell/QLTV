@@ -1,10 +1,12 @@
 package com.practice.QLTV.controller;
 
 import com.practice.QLTV.dto.BookDTO;
-import com.practice.QLTV.entity.Book;
+import com.practice.QLTV.dto.response.ApiResponse;
+import com.practice.QLTV.exception.AppException;
+import com.practice.QLTV.exception.ErrorCode;
 import com.practice.QLTV.service.BookService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,46 +23,32 @@ public class BookController {
     private final BookService bookService;
 
     @PostMapping
-    public ResponseEntity<List<Book>> addBook(@RequestBody BookDTO bookDTO) {
-        List<Book> books = bookService.addBook(bookDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(books);
+    public ResponseEntity<ApiResponse<List<BookDTO>>> addBook(@Valid @RequestBody BookDTO bookDTO) {
+        return ResponseEntity.ok(bookService.addBook(bookDTO));
     }
 
     @PostMapping("/batch")
-    public ResponseEntity<List<Book>> addMultiBook(@RequestParam("file") MultipartFile file) {
-        try {
-            List<Book> books = bookService.addMultiBook(file);
-            return ResponseEntity.status(HttpStatus.CREATED).body(books);
-        } catch (IOException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+    public ResponseEntity<ApiResponse<List<BookDTO>>> addMultiBook(@RequestParam("file") MultipartFile file) throws IOException {
+        return ResponseEntity.ok(bookService.addMultiBook(file));
     }
 
     @GetMapping
-    public ResponseEntity<List<Book>> getAllBooks() {
-        List<Book> books = bookService.findAllBooks();
-        return ResponseEntity.ok(books);
+    public ResponseEntity<ApiResponse<List<BookDTO>>> getAllBooks() {
+        return ResponseEntity.ok(bookService.findAllBooks());
     }
 
     @GetMapping("/{title}")
-    public ResponseEntity<List<Book>> getBookByTitle(@PathVariable String title) {
-        List<Book> books = bookService.findBookByTitle(title);
-        return books.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(books);
+    public ResponseEntity<ApiResponse<List<BookDTO>>> getBookByTitle(@PathVariable String title) {
+        return ResponseEntity.ok(bookService.findBookByTitle(title));
     }
 
     @GetMapping("/export")
-    public ResponseEntity<String> exportBooksToExcel() {
-        try {
-            File file = bookService.exportBooksToExcel();
-            return ResponseEntity.ok("Exported file path: " + file.getAbsolutePath());
-        } catch (IOException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Export failed");
-        }
+    public ResponseEntity<ApiResponse<String>> exportBooksToExcel() throws IOException {
+        return ResponseEntity.ok(bookService.exportBooksToExcel());
     }
 
     @DeleteMapping("/{title}")
-    public ResponseEntity<List<Book>> deleteBookByTitle(@PathVariable String title) {
-        List<Book> books = bookService.deleteBookByTitle(title);
-        return ResponseEntity.ok(books);
+    public ResponseEntity<ApiResponse<List<BookDTO>>> deleteBookByTitle(@PathVariable String title) {
+        return ResponseEntity.ok(bookService.deleteBookByTitle(title));
     }
 }

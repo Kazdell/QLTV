@@ -33,4 +33,20 @@ public class FunctionServiceImpl implements FunctionService {
                 .map(function -> new FunctionDTO(function.getId(), function.getFunctionCode(), function.getFunctionName(), function.getDescription()))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public FunctionDTO getFunctionByCode(String functionCode) {
+        Function function = functionRepository.findByFunctionCode(functionCode)
+                .orElseThrow(() -> new RuntimeException("Function not found"));
+        return mapToDTO(function);
+    }
+
+    private FunctionDTO mapToDTO(Function function) {
+        return new FunctionDTO(
+                function.getId(),
+                function.getFunctionCode(),
+                function.getFunctionName(),
+                function.getDescription()
+        );
+    }
 }

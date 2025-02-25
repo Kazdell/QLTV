@@ -24,4 +24,9 @@ public class FunctionController {
     public ResponseEntity<List<FunctionDTO>> getAllFunctions() {
         return ResponseEntity.ok(functionService.getAllFunctions());
     }
+
+    @GetMapping("/{functionCode}")
+    public ResponseEntity<FunctionDTO> getFunctionByCode(@PathVariable String functionCode) {
+        return ResponseEntity.ok(functionService.getFunctionByCode(functionCode));
+    }
 }
