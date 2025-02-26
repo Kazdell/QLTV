@@ -38,7 +38,7 @@ public class CategoryServiceImp implements CategoryService {
         categoryRepository.save(category);
         List<CategoryDTO> allCategories = getAllCategoriesAsDTO();
         return ApiResponse.<List<CategoryDTO>>builder()
-                .code(ErrorCode.USER_CREATED_SUCCESSFULLY.getCode()) 
+                .code(ErrorCode.USER_CREATED_SUCCESSFULLY.getCode()) // 1000
                 .message("Category created successfully")
                 .result(allCategories)
                 .build();
@@ -54,7 +54,7 @@ public class CategoryServiceImp implements CategoryService {
         category = categoryRepository.save(category);
         CategoryDTO result = toCategoryDTO(category);
         return ApiResponse.<CategoryDTO>builder()
-                .code(ErrorCode.USER_UPDATED_SUCCESSFULLY.getCode()) 
+                .code(ErrorCode.USER_UPDATED_SUCCESSFULLY.getCode()) // 1000
                 .message("Category updated successfully")
                 .result(result)
                 .build();
@@ -67,7 +67,7 @@ public class CategoryServiceImp implements CategoryService {
         categoryRepository.delete(category);
         List<CategoryDTO> allCategories = getAllCategoriesAsDTO();
         return ApiResponse.<List<CategoryDTO>>builder()
-                .code(ErrorCode.OPERATION_SUCCESSFUL.getCode()) 
+                .code(ErrorCode.OPERATION_SUCCESSFUL.getCode()) // 1000
                 .message("Category deleted successfully")
                 .result(allCategories)
                 .build();
@@ -98,7 +98,7 @@ public class CategoryServiceImp implements CategoryService {
         categoryRepository.saveAll(categories);
         List<CategoryDTO> allCategories = getAllCategoriesAsDTO();
         return ApiResponse.<List<CategoryDTO>>builder()
-                .code(ErrorCode.USER_CREATED_SUCCESSFULLY.getCode()) 
+                .code(ErrorCode.USER_CREATED_SUCCESSFULLY.getCode()) // 1000
                 .message("Categories created successfully")
                 .result(allCategories)
                 .build();
@@ -108,7 +108,7 @@ public class CategoryServiceImp implements CategoryService {
     public ApiResponse<List<CategoryDTO>> findAllCategories() {
         List<CategoryDTO> categories = getAllCategoriesAsDTO();
         return ApiResponse.<List<CategoryDTO>>builder()
-                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode()) 
+                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode()) // 1000
                 .message(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getMessage())
                 .result(categories)
                 .build();
@@ -120,7 +120,7 @@ public class CategoryServiceImp implements CategoryService {
                 .orElseThrow(() -> new AppException(ErrorCode.RESOURCE_NOT_FOUND));
         CategoryDTO result = toCategoryDTO(category);
         return ApiResponse.<CategoryDTO>builder()
-                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode()) 
+                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode()) // 1000
                 .message(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getMessage())
                 .result(result)
                 .build();
@@ -132,7 +132,7 @@ public class CategoryServiceImp implements CategoryService {
                 .orElseThrow(() -> new AppException(ErrorCode.RESOURCE_NOT_FOUND));
         CategoryDTO result = toCategoryDTO(category);
         return ApiResponse.<List<CategoryDTO>>builder()
-                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode()) 
+                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode()) // 1000
                 .message(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getMessage())
                 .result(List.of(result))
                 .build();

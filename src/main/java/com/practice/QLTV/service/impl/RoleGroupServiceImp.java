@@ -1,81 +1,85 @@
 package com.practice.QLTV.service.impl;
 
-import com.practice.QLTV.dto.request.RoleGroupRequest;
-import com.practice.QLTV.dto.response.RoleGroupResponse;
+import com.practice.QLTV.dto.RoleGroupDTO;
+import com.practice.QLTV.dto.response.ApiResponse;
 import com.practice.QLTV.entity.RoleGroup;
+import com.practice.QLTV.exception.AppException;
+import com.practice.QLTV.exception.ErrorCode;
 import com.practice.QLTV.repository.RoleGroupRepository;
 import com.practice.QLTV.service.RoleGroupService;
-import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
-import lombok.experimental.FieldDefaults;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
-@Slf4j
 @Service
 @RequiredArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class RoleGroupServiceImp implements RoleGroupService {
 
-    RoleGroupRepository roleGroupRepository;
+    private final RoleGroupRepository roleRepository;
 
     @Override
-    public RoleGroupResponse createRoleGroup(RoleGroupRequest roleGroupRequest) {
-        RoleGroup roleGroup = RoleGroup.builder()
-                .roleGroupCode(roleGroupRequest.getRoleGroupCode())
-                .roleGroupName(roleGroupRequest.getRoleGroupName())
-                .description(roleGroupRequest.getDescription())
+    public ApiResponse<RoleGroupDTO> createRole(RoleGroupDTO roleGroupDTO) {
+        if (roleRepository.findByRoleGroupCode(roleGroupDTO.getRoleGroupCode()).isPresent()) {
+            throw new AppException(ErrorCode.RESOURCE_ALREADY_EXISTS, "Role group code " + roleGroupDTO.getRoleGroupCode() + " already exists");
+        }
+        RoleGroup role = RoleGroup.builder()
+                .roleGroupCode(roleGroupDTO.getRoleGroupCode())
+                .roleGroupName(roleGroupDTO.getRoleGroupName())
+                .description(roleGroupDTO.getDescription())
                 .build();
-
-        RoleGroup savedRoleGroup = roleGroupRepository.save(roleGroup);
-        return RoleGroupResponse.builder()
-                .roleGroupCode(savedRoleGroup.getRoleGroupCode())
-                .roleGroupName(savedRoleGroup.getRoleGroupName())
-                .description(savedRoleGroup.getDescription())
-                .build();
-    }
-
-    @Override
-    public List<RoleGroup> getAllRoleGroups() {
-        return (roleGroupRepository.findAll());
-    }
-
-    @Override
-    public RoleGroupResponse getRoleGroupByCode(String roleGroupCode) {
-        RoleGroup roleGroup = roleGroupRepository.findByRoleGroupCode(roleGroupCode)
-                .orElseThrow(() -> new RuntimeException("Role group code does not exist"));
-        return RoleGroupResponse.builder()
-                .roleGroupCode(roleGroup.getRoleGroupCode())
-                .roleGroupName(roleGroup.getRoleGroupName())
-                .description(roleGroup.getDescription())
+        role = roleRepository.save(role);
+        RoleGroupDTO result = toRoleGroupDTO(role);
+        return ApiResponse.<RoleGroupDTO>builder()
+                .code(ErrorCode.USER_CREATED_SUCCESSFULLY.getCode()) 
+                .message("Role group created successfully")
+                .result(result)
                 .build();
     }
 
     @Override
-    public RoleGroupResponse updateRoleGroup(String roleGroupCode, RoleGroupRequest roleGroupRequest) {
-        RoleGroup existingRoleGroup = roleGroupRepository.findByRoleGroupCode(roleGroupCode)
-                .orElseThrow(() -> new RuntimeException("Role group code does not exist"));
-
-        existingRoleGroup.setRoleGroupCode(roleGroupRequest.getRoleGroupCode());
-        existingRoleGroup.setRoleGroupName(roleGroupRequest.getRoleGroupName());
-        existingRoleGroup.setDescription(roleGroupRequest.getDescription());
-
-        RoleGroup updatedRoleGroup = roleGroupRepository.save(existingRoleGroup);
-        return RoleGroupResponse.builder()
-                .roleGroupCode(updatedRoleGroup.getRoleGroupCode())
-                .roleGroupName(updatedRoleGroup.getRoleGroupName())
-                .description(updatedRoleGroup.getDescription())
+    public ApiResponse<List<RoleGroupDTO>> getAllRoles() {
+        List<RoleGroupDTO> roles = roleRepository.findAll().stream()
+                .map(this::toRoleGroupDTO)
+                .collect(Collectors.toList());
+        return ApiResponse.<List<RoleGroupDTO>>builder()
+                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode()) 
+                .message(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getMessage())
+                .result(roles)
                 .build();
     }
 
     @Override
-    public String deleteRoleGroup(String roleGroupCode) {
-        RoleGroup existingRoleGroup = roleGroupRepository.findByRoleGroupCode(roleGroupCode)
-                .orElseThrow(() -> new RuntimeException("Role group code does not exist"));
+    public ApiResponse<RoleGroupDTO> getRoleById(Integer id) {
+        RoleGroup role = roleRepository.findById(id)
+                .orElseThrow(() -> new AppException(ErrorCode.RESOURCE_NOT_FOUND));
+        RoleGroupDTO result = toRoleGroupDTO(role);
+        return ApiResponse.<RoleGroupDTO>builder()
+                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode()) 
+                .message(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getMessage())
+                .result(result)
+                .build();
+    }
 
-        roleGroupRepository.delete(existingRoleGroup);
-        return "Role group has been deleted";
+    @Override
+    public ApiResponse<Void> deleteRole(Integer id) {
+        RoleGroup role = roleRepository.findById(id)
+                .orElseThrow(() -> new AppException(ErrorCode.RESOURCE_NOT_FOUND));
+        roleRepository.delete(role);
+        return ApiResponse.<Void>builder()
+                .code(ErrorCode.OPERATION_SUCCESSFUL.getCode()) 
+                .message("Role group deleted successfully")
+                .result(null)
+                .build();
+    }
+
+    private RoleGroupDTO toRoleGroupDTO(RoleGroup role) {
+        return new RoleGroupDTO(
+                role.getId(),
+                role.getRoleGroupCode(),
+                role.getRoleGroupName(),
+                role.getDescription()
+        );
     }
 }

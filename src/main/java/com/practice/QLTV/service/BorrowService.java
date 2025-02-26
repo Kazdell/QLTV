@@ -1,22 +1,22 @@
 package com.practice.QLTV.service;
 
 import com.practice.QLTV.dto.BorrowDTO;
-import com.practice.QLTV.entity.Borrow;
+import com.practice.QLTV.dto.response.ApiResponse;
 
 import java.util.List;
 
 public interface BorrowService {
-    Borrow createBorrow(BorrowDTO borrowDTO);
+    ApiResponse<BorrowDTO> createBorrow(BorrowDTO borrowDTO);
 
-    Borrow updateBorrow(Integer borrowId, BorrowDTO borrowDTO);
+    ApiResponse<BorrowDTO> updateBorrow(Integer borrowId, BorrowDTO borrowDTO);
 
-    void deleteBorrow(Integer borrowId);
+    ApiResponse<Void> deleteBorrow(Integer borrowId);
 
-    Borrow returnBorrow(Integer borrowId);
+    ApiResponse<BorrowDTO> returnBorrow(Integer borrowId);
 
-    List<Borrow> getAllBorrows();
+    ApiResponse<List<BorrowDTO>> getAllBorrows();
 
-    Borrow getBorrowById(Integer borrowId);
+    ApiResponse<BorrowDTO> getBorrowById(Integer borrowId);
 
-    List<Borrow> getBorrowsByUserId(Integer userId);
+    ApiResponse<List<BorrowDTO>> getBorrowsByUserId(Integer userId);
 }

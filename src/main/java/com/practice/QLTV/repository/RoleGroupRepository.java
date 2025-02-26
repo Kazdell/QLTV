@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface RoleGroupRepository extends JpaRepository<RoleGroup, Integer>{
+public interface RoleGroupRepository extends JpaRepository<RoleGroup, Integer> {
     Optional<RoleGroup> findByRoleGroupCode(String roleGroupCode);
-
 }

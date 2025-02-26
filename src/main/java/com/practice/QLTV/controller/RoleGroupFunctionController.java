@@ -1,47 +1,35 @@
 package com.practice.QLTV.controller;
 
-import com.practice.QLTV.dto.request.RoleGroupFunctionRequest;
-import com.practice.QLTV.entity.RoleGroupFunction;
+import com.practice.QLTV.dto.FunctionDTO;
+import com.practice.QLTV.dto.RoleGroupFunctionDTO;
+import com.practice.QLTV.dto.response.ApiResponse;
 import com.practice.QLTV.service.RoleGroupFunctionService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@Slf4j
+@RequestMapping("/api/role-functions")
 @RequiredArgsConstructor
-@RequestMapping("/api/role-group-functions")
 public class RoleGroupFunctionController {
 
     private final RoleGroupFunctionService roleGroupFunctionService;
 
     @PostMapping
-    public ResponseEntity<RoleGroupFunction> createRoleGroupFunction(@RequestBody @Validated RoleGroupFunctionRequest request) {
-        RoleGroupFunction response = roleGroupFunctionService.createRoleGroupFunction(request);
-        return ResponseEntity.ok(response);
+    public ResponseEntity<ApiResponse<RoleGroupFunctionDTO>> assignFunctionToRole(@Valid @RequestBody RoleGroupFunctionDTO roleGroupFunctionDTO) {
+        return ResponseEntity.ok(roleGroupFunctionService.assignFunctionToRole(roleGroupFunctionDTO));
     }
 
-    @GetMapping("/{roleGroupId}")
-    public ResponseEntity<List<RoleGroupFunction>> getFunctionsByRoleGroup(@PathVariable Integer roleGroupId) {
-        List<RoleGroupFunction> response = roleGroupFunctionService.getFunctionsByRoleGroup(roleGroupId);
-        return ResponseEntity.ok(response);
+    @GetMapping("/{roleId}")
+    public ResponseEntity<ApiResponse<List<RoleGroupFunctionDTO>>> getFunctionsByRoleId(@PathVariable Integer roleId) {
+        return ResponseEntity.ok(roleGroupFunctionService.getFunctionsByRoleId(roleId));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<RoleGroupFunction> updateRoleGroupFunction(
-            @PathVariable Integer id,
-            @RequestBody @Validated RoleGroupFunctionRequest request) {
-        RoleGroupFunction response = roleGroupFunctionService.updateRoleGroupFunction(id, request);
-        return ResponseEntity.ok(response);
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteRoleGroupFunction(@PathVariable Integer id) {
-        String message = roleGroupFunctionService.deleteRoleGroupFunction(id);
-        return ResponseEntity.ok(message);
+    @GetMapping("/{roleGroupId}/functions")
+    public ResponseEntity<ApiResponse<List<FunctionDTO>>> getFunctionsByRoleGroup(@PathVariable Integer roleGroupId) {
+        return ResponseEntity.ok(roleGroupFunctionService.getFunctionsByRoleGroup(roleGroupId));
     }
 }
