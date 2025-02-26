@@ -42,7 +42,7 @@ public class BookServiceImp implements BookService {
         bookRepository.save(book);
         List<BookDTO> allBooks = findAllBooksAsDTO();
         return ApiResponse.<List<BookDTO>>builder()
-                .code(ErrorCode.USER_CREATED_SUCCESSFULLY.getCode()) // 1000
+                .code(ErrorCode.USER_CREATED_SUCCESSFULLY.getCode()) 
                 .message("Book created successfully")
                 .result(allBooks)
                 .build();
@@ -77,7 +77,7 @@ public class BookServiceImp implements BookService {
         bookRepository.saveAll(books);
         List<BookDTO> allBooks = findAllBooksAsDTO();
         return ApiResponse.<List<BookDTO>>builder()
-                .code(ErrorCode.USER_CREATED_SUCCESSFULLY.getCode()) // 1000
+                .code(ErrorCode.USER_CREATED_SUCCESSFULLY.getCode()) 
                 .message("Books created successfully")
                 .result(allBooks)
                 .build();
@@ -87,7 +87,7 @@ public class BookServiceImp implements BookService {
     public ApiResponse<List<BookDTO>> findAllBooks() {
         List<BookDTO> books = findAllBooksAsDTO();
         return ApiResponse.<List<BookDTO>>builder()
-                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode()) // 1000
+                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode()) 
                 .message(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getMessage()) // "Retrieve successfully"
                 .result(books)
                 .build();
@@ -99,7 +99,7 @@ public class BookServiceImp implements BookService {
                 .orElseThrow(() -> new AppException(ErrorCode.RESOURCE_NOT_FOUND));
         BookDTO bookDTO = toBookDTO(book);
         return ApiResponse.<List<BookDTO>>builder()
-                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode()) // 1000
+                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode()) 
                 .message(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getMessage())
                 .result(List.of(bookDTO))
                 .build();
@@ -130,7 +130,7 @@ public class BookServiceImp implements BookService {
                 workbook.write(outputStream);
             }
             return ApiResponse.<String>builder()
-                    .code(ErrorCode.OPERATION_SUCCESSFUL.getCode()) // 1000
+                    .code(ErrorCode.OPERATION_SUCCESSFUL.getCode()) 
                     .message("Books exported successfully")
                     .result(file.getAbsolutePath())
                     .build();
@@ -145,7 +145,7 @@ public class BookServiceImp implements BookService {
         bookRepository.delete(book);
         List<BookDTO> allBooks = findAllBooksAsDTO();
         return ApiResponse.<List<BookDTO>>builder()
-                .code(ErrorCode.OPERATION_SUCCESSFUL.getCode()) // 1000
+                .code(ErrorCode.OPERATION_SUCCESSFUL.getCode()) 
                 .message("Book deleted successfully")
                 .result(allBooks)
                 .build();

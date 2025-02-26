@@ -5,6 +5,7 @@ import com.practice.QLTV.dto.response.ApiResponse;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 public interface BookService {
     ApiResponse<List<BookDTO>> addBook(BookDTO bookDTO);

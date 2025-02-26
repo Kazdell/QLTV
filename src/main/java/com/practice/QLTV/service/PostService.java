@@ -3,22 +3,16 @@ package com.practice.QLTV.service;
 import com.practice.QLTV.dto.BookPostDTO;
 import com.practice.QLTV.dto.PostCommentDTO;
 import com.practice.QLTV.dto.PostLikeDTO;
-import com.practice.QLTV.entity.BookPost;
-import com.practice.QLTV.entity.PostComment;
+import com.practice.QLTV.dto.response.ApiResponse;
+
 import java.util.List;
 
 public interface PostService {
-    BookPost createPost(BookPostDTO postDTO);
-
-    BookPost updatePost(Integer postId, BookPostDTO postDTO);
-
-    void deletePost(Integer postId);
-
-    List<BookPost> findPostByTitle(String title);
-
-    void likePost(PostLikeDTO postLikeDTO);
-
-    PostComment commentOnPost(PostCommentDTO postCommentDTO);
-
-    List<PostComment> getCommentsByPostId(Integer postId);
+    ApiResponse<BookPostDTO> createPost(BookPostDTO postDTO);
+    ApiResponse<BookPostDTO> updatePost(Integer postId, BookPostDTO postDTO);
+    ApiResponse<Void> deletePost(Integer postId);
+    ApiResponse<List<BookPostDTO>> findPostByTitle(String title);
+    ApiResponse<Void> likePost(PostLikeDTO postLikeDTO);
+    ApiResponse<PostCommentDTO> commentOnPost(PostCommentDTO postCommentDTO);
+    ApiResponse<List<PostCommentDTO>> getCommentsByPostId(Integer postId);
 }

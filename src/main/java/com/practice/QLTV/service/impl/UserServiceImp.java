@@ -36,7 +36,7 @@ public class UserServiceImp implements UserService {
         log.debug("Fetching user with ID: {}", id);
         User user = findUserById(id);
         return ApiResponse.<UserResponse>builder()
-                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode()) // 1000
+                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode()) 
                 .message(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getMessage()) // "Retrieve successfully"
                 .result(userMapper.toUserResponse(user))
                 .build();
@@ -53,7 +53,7 @@ public class UserServiceImp implements UserService {
 
         PageResponse<UserResponse> pageResponse = convertToPageResponse(userPage);
         return ApiResponse.<PageResponse<UserResponse>>builder()
-                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode()) // 1000
+                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode()) 
                 .message(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getMessage()) // "Retrieve successfully"
                 .result(pageResponse)
                 .build();
@@ -76,7 +76,7 @@ public class UserServiceImp implements UserService {
 
         log.info("User {} status updated to: {}", id, newStatus);
         return ApiResponse.<UserResponse>builder()
-                .code(ErrorCode.UPDATE_STATUS_SUCCESSFUL.getCode()) // 1000
+                .code(ErrorCode.UPDATE_STATUS_SUCCESSFUL.getCode()) 
                 .message(ErrorCode.UPDATE_STATUS_SUCCESSFUL.getMessage()) // "User status updated successfully"
                 .result(userMapper.toUserResponse(updatedUser))
                 .build();
@@ -98,7 +98,7 @@ public class UserServiceImp implements UserService {
         log.info("Created new user with ID: {}", savedUser.getId());
 
         return ApiResponse.<UserResponse>builder()
-                .code(ErrorCode.USER_CREATED_SUCCESSFULLY.getCode()) // 1000
+                .code(ErrorCode.USER_CREATED_SUCCESSFULLY.getCode()) 
                 .message(ErrorCode.USER_CREATED_SUCCESSFULLY.getMessage()) // "User created successfully"
                 .result(userMapper.toUserResponse(savedUser))
                 .build();
@@ -116,7 +116,7 @@ public class UserServiceImp implements UserService {
 
         log.info("Updated user with ID: {}", id);
         return ApiResponse.<UserResponse>builder()
-                .code(ErrorCode.USER_UPDATED_SUCCESSFULLY.getCode()) // 1000
+                .code(ErrorCode.USER_UPDATED_SUCCESSFULLY.getCode()) 
                 .message(ErrorCode.USER_UPDATED_SUCCESSFULLY.getMessage()) // "User updated successfully"
                 .result(userMapper.toUserResponse(savedUser))
                 .build();
@@ -134,7 +134,7 @@ public class UserServiceImp implements UserService {
 
         PageResponse<UserResponse> pageResponse = convertToPageResponse(userPage);
         return ApiResponse.<PageResponse<UserResponse>>builder()
-                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode()) // 1000
+                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode()) 
                 .message(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getMessage()) // "Retrieve successfully"
                 .result(pageResponse)
                 .build();
@@ -147,7 +147,7 @@ public class UserServiceImp implements UserService {
 
         PageResponse<UserResponse> pageResponse = convertToPageResponse(userPage);
         return ApiResponse.<PageResponse<UserResponse>>builder()
-                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode()) // 1000
+                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode()) 
                 .message(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getMessage()) // "Retrieve successfully"
                 .result(pageResponse)
                 .build();
@@ -162,7 +162,7 @@ public class UserServiceImp implements UserService {
                 .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
 
         return ApiResponse.<UserResponse>builder()
-                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode()) // 1000
+                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode()) 
                 .message(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getMessage()) // "Retrieve successfully"
                 .result(userMapper.toUserResponse(user))
                 .build();

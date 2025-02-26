@@ -46,7 +46,7 @@ public class BorrowServiceImp implements BorrowService {
 
         BorrowDTO result = toBorrowDTO(borrow);
         return ApiResponse.<BorrowDTO>builder()
-                .code(ErrorCode.USER_CREATED_SUCCESSFULLY.getCode()) 
+                .code(ErrorCode.USER_CREATED_SUCCESSFULLY.getCode()) // 1000
                 .message("Borrow created successfully")
                 .result(result)
                 .build();
@@ -63,7 +63,7 @@ public class BorrowServiceImp implements BorrowService {
         borrow = borrowRepository.save(borrow);
         BorrowDTO result = toBorrowDTO(borrow);
         return ApiResponse.<BorrowDTO>builder()
-                .code(ErrorCode.USER_UPDATED_SUCCESSFULLY.getCode()) 
+                .code(ErrorCode.USER_UPDATED_SUCCESSFULLY.getCode()) // 1000
                 .message("Borrow updated successfully")
                 .result(result)
                 .build();
@@ -76,7 +76,7 @@ public class BorrowServiceImp implements BorrowService {
                 .orElseThrow(() -> new AppException(ErrorCode.RESOURCE_NOT_FOUND));
         borrowRepository.delete(borrow);
         return ApiResponse.<Void>builder()
-                .code(ErrorCode.OPERATION_SUCCESSFUL.getCode()) 
+                .code(ErrorCode.OPERATION_SUCCESSFUL.getCode()) // 1000
                 .message("Borrow deleted successfully")
                 .result(null)
                 .build();
@@ -91,7 +91,7 @@ public class BorrowServiceImp implements BorrowService {
         borrow = borrowRepository.save(borrow);
         BorrowDTO result = toBorrowDTO(borrow);
         return ApiResponse.<BorrowDTO>builder()
-                .code(ErrorCode.OPERATION_SUCCESSFUL.getCode()) 
+                .code(ErrorCode.OPERATION_SUCCESSFUL.getCode()) // 1000
                 .message("Borrow returned successfully")
                 .result(result)
                 .build();
@@ -103,7 +103,7 @@ public class BorrowServiceImp implements BorrowService {
                 .map(this::toBorrowDTO)
                 .collect(Collectors.toList());
         return ApiResponse.<List<BorrowDTO>>builder()
-                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode()) 
+                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode()) // 1000
                 .message(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getMessage())
                 .result(borrows)
                 .build();
@@ -115,7 +115,7 @@ public class BorrowServiceImp implements BorrowService {
                 .orElseThrow(() -> new AppException(ErrorCode.RESOURCE_NOT_FOUND));
         BorrowDTO result = toBorrowDTO(borrow);
         return ApiResponse.<BorrowDTO>builder()
-                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode()) 
+                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode()) // 1000
                 .message(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getMessage())
                 .result(result)
                 .build();
@@ -130,7 +130,7 @@ public class BorrowServiceImp implements BorrowService {
                 .map(this::toBorrowDTO)
                 .collect(Collectors.toList());
         return ApiResponse.<List<BorrowDTO>>builder()
-                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode()) 
+                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode()) // 1000
                 .message(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getMessage())
                 .result(borrows)
                 .build();

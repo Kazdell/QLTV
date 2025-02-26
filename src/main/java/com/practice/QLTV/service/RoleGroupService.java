@@ -1,11 +1,13 @@
 package com.practice.QLTV.service;
 
 import com.practice.QLTV.dto.RoleGroupDTO;
+import com.practice.QLTV.dto.response.ApiResponse;
+
 import java.util.List;
 
 public interface RoleGroupService {
-    RoleGroupDTO createRole(RoleGroupDTO roleGroupDTO);
-    List<RoleGroupDTO> getAllRoles();
-    RoleGroupDTO getRoleById(Integer id);
-    void deleteRole(Integer id);
+    ApiResponse<RoleGroupDTO> createRole(RoleGroupDTO roleGroupDTO);
+    ApiResponse<List<RoleGroupDTO>> getAllRoles();
+    ApiResponse<RoleGroupDTO> getRoleById(Integer id);
+    ApiResponse<Void> deleteRole(Integer id);
 }
