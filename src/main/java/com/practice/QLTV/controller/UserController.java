@@ -69,7 +69,7 @@ public class UserController {
         return ResponseEntity.ok(userService.searchAdvancedUsers(pageable, keyword));
     }
 
-    @GetMapping("/current")
+    @GetMapping("/myinfo")
     public ResponseEntity<ApiResponse<UserResponse>> getCurrentUserInfo() {
         return ResponseEntity.ok(userService.getCurrentUserInfo());
     }
