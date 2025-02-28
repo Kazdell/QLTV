@@ -32,4 +32,9 @@ public class RoleGroupFunctionController {
     public ResponseEntity<ApiResponse<List<FunctionDTO>>> getFunctionsByRoleGroup(@PathVariable Integer roleGroupId) {
         return ResponseEntity.ok(roleGroupFunctionService.getFunctionsByRoleGroup(roleGroupId));
     }
+
+    @PostMapping("/assign-all-to-admin")
+    public ResponseEntity<ApiResponse<Void>> assignAllFunctionsToAdmin() {
+        return ResponseEntity.ok(roleGroupFunctionService.assignAllFunctionsToAdmin());
+    }
 }

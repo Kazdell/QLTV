@@ -13,6 +13,7 @@ import com.practice.QLTV.repository.RoleGroupRepository;
 import com.practice.QLTV.service.RoleGroupFunctionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,6 +25,8 @@ public class RoleGroupFunctionServiceImpl implements RoleGroupFunctionService {
     private final RoleGroupFunctionRepository roleGroupFunctionRepository;
     private final RoleGroupRepository roleGroupRepository;
     private final FunctionRepository functionRepository;
+
+    private static final int ADMIN_ROLE_ID = 2; // Hardcoded for ADMIN role
 
     @Override
     public ApiResponse<RoleGroupFunctionDTO> assignFunctionToRole(RoleGroupFunctionDTO roleFunctionDTO) {
@@ -40,7 +43,7 @@ public class RoleGroupFunctionServiceImpl implements RoleGroupFunctionService {
         roleFunction = roleGroupFunctionRepository.save(roleFunction);
         RoleGroupFunctionDTO result = toRoleGroupFunctionDTO(roleFunction);
         return ApiResponse.<RoleGroupFunctionDTO>builder()
-                .code(ErrorCode.OPERATION_SUCCESSFUL.getCode()) 
+                .code(ErrorCode.OPERATION_SUCCESSFUL.getCode())
                 .message("Function assigned to role successfully")
                 .result(result)
                 .build();
@@ -55,7 +58,7 @@ public class RoleGroupFunctionServiceImpl implements RoleGroupFunctionService {
                 .map(this::toRoleGroupFunctionDTO)
                 .collect(Collectors.toList());
         return ApiResponse.<List<RoleGroupFunctionDTO>>builder()
-                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode()) 
+                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode())
                 .message(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getMessage())
                 .result(functions)
                 .build();
@@ -70,9 +73,42 @@ public class RoleGroupFunctionServiceImpl implements RoleGroupFunctionService {
                 .map(this::toFunctionDTO)
                 .collect(Collectors.toList());
         return ApiResponse.<List<FunctionDTO>>builder()
-                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode()) 
+                .code(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getCode())
                 .message(ErrorCode.USER_RETRIEVED_SUCCESSFULLY.getMessage())
                 .result(functions)
+                .build();
+    }
+
+    @Override
+    @Transactional
+    public ApiResponse<Void> assignAllFunctionsToAdmin() {
+        if (!roleGroupRepository.existsById(ADMIN_ROLE_ID)) {
+            throw new AppException(ErrorCode.RESOURCE_NOT_FOUND, "Admin role with ID " + ADMIN_ROLE_ID + " not found");
+        }
+        List<Function> allFunctions = functionRepository.findAll();
+
+        // Assign each function to ADMIN role if not already assigned
+        List<RoleGroupFunction> existingMappings = roleGroupFunctionRepository.findByRoleGroupId(ADMIN_ROLE_ID);
+        List<Integer> existingFunctionIds = existingMappings.stream()
+                .map(RoleGroupFunction::getFunctionId)
+                .collect(Collectors.toList());
+
+        List<RoleGroupFunction> newMappings = allFunctions.stream()
+                .filter(function -> !existingFunctionIds.contains(function.getId()))
+                .map(function -> RoleGroupFunction.builder()
+                        .roleGroupId(ADMIN_ROLE_ID)
+                        .functionId(function.getId())
+                        .build())
+                .collect(Collectors.toList());
+
+        if (!newMappings.isEmpty()) {
+            roleGroupFunctionRepository.saveAll(newMappings);
+        }
+
+        return ApiResponse.<Void>builder()
+                .code(ErrorCode.OPERATION_SUCCESSFUL.getCode())
+                .message("All functions assigned to ADMIN role successfully")
+                .result(null)
                 .build();
     }
 

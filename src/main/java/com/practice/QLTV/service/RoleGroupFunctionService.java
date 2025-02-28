@@ -10,4 +10,5 @@ public interface RoleGroupFunctionService {
     ApiResponse<RoleGroupFunctionDTO> assignFunctionToRole(RoleGroupFunctionDTO roleFunctionDTO);
     ApiResponse<List<RoleGroupFunctionDTO>> getFunctionsByRoleId(Integer roleId);
     ApiResponse<List<FunctionDTO>> getFunctionsByRoleGroup(Integer roleGroupId);
+    ApiResponse<Void> assignAllFunctionsToAdmin();
 }

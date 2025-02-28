@@ -8,38 +8,34 @@ import com.practice.QLTV.dto.response.ApiResponse;
 import com.practice.QLTV.dto.response.AuthResponse;
 import com.practice.QLTV.dto.response.IntrospectResponse;
 import com.practice.QLTV.service.AuthenticationService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/api/auth")
+@RequiredArgsConstructor
 public class AuthenticationController {
-    @Autowired
-    private AuthenticationService authenticationService;
+
+    private final AuthenticationService authenticationService;
 
     @PostMapping("/token")
-    public ApiResponse<AuthResponse> login(@RequestBody AuthRequest authenticationRequest) {
-        var result = authenticationService.authenticate(authenticationRequest);
-        return ApiResponse.<AuthResponse>builder().result(result).build();
-    }
-
-    @PostMapping("/logout")
-    public ApiResponse<Void> logout(@RequestBody LogoutRequest request) throws ParseException, JOSEException {
-        authenticationService.logout(request);
-        return ApiResponse.<Void>builder().build();
+    public ResponseEntity<ApiResponse<AuthResponse>> authenticate(@Valid @RequestBody AuthRequest request) {
+        return ResponseEntity.ok(authenticationService.authenticate(request));
     }
 
     @PostMapping("/introspect")
-    public ApiResponse<IntrospectResponse> login(@RequestBody IntrospectRequest request) throws ParseException, JOSEException {
-        var result = authenticationService.introspect(request);
-        return ApiResponse.<IntrospectResponse>builder().result(result).build();
+    public ResponseEntity<ApiResponse<IntrospectResponse>> introspect(@Valid @RequestBody IntrospectRequest request)
+            throws JOSEException, ParseException {
+        return ResponseEntity.ok(authenticationService.introspect(request));
     }
 
+    @PostMapping("/logout")
+    public ResponseEntity<ApiResponse<Void>> logout(@Valid @RequestBody LogoutRequest request)
+            throws JOSEException, ParseException {
+        return ResponseEntity.ok(authenticationService.logout(request));
+    }
 }
