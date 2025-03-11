@@ -20,7 +20,7 @@ public class CustomPermissionEvaluator implements PermissionEvaluator {
         if (authentication == null || uri == null || method == null) {
             return false;
         }
-        return hasRole(authentication, uri.toString());
+        return hasRole(authentication, uri.toString(), method.toString());
     }
 
     @Override
@@ -28,23 +28,15 @@ public class CustomPermissionEvaluator implements PermissionEvaluator {
         if (authentication == null || uri == null || method == null) {
             return false;
         }
-        return hasRole(authentication, uri);
+        return hasRole(authentication, uri, method.toString());
     }
 
-    private boolean hasRole(Authentication authentication, String targetDomainObject) {
-        String functionCode = convertString(targetDomainObject); // Convert to function code format
-
-        for (Object key : properties.keySet()) {
-            if (functionCode.equalsIgnoreCase(key.toString()) &&
-                    authentication.getAuthorities().contains(new SimpleGrantedAuthority(properties.getProperty((String) key)))) {
-                return true;
-            }
+    private boolean hasRole(Authentication authentication, String uri, String method) {
+        String functionCode = properties.getProperty(uri);
+        if (functionCode == null) {
+            return false;
         }
 
-        return false;
-    }
-
-    private String convertString(String target) {
-        return target.replace("/", "_").toUpperCase();
+        return authentication.getAuthorities().contains(new SimpleGrantedAuthority(functionCode));
     }
 }

@@ -4,6 +4,10 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -18,6 +22,10 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 import static lombok.AccessLevel.PRIVATE;
 
 @Configuration
@@ -28,11 +36,13 @@ public class SecurityConfig {
 
     final String[] PUBLIC_ENDPOINTS = {
             "/api/users", "/log-in", "/api/roles", "/myinfo",
-            "/api/auth/token", "/api/auth/introspect", "/api/auth/logout"
+            "/api/auth/token", "/api/auth/introspect", "/api/auth/logout",
+            "api/role-functions/assign-all-to-admin"
     };
 
     @Value("${jwt.signerKey}")
     String signerKey;
+
     CustomJwtDecoder customJwtDecoder;
 
     @Bean
@@ -81,4 +91,13 @@ public class SecurityConfig {
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(10);
     }
+
+    @Bean
+    public CustomPermissionEvaluator customPermissionEvaluator() throws IOException {
+        Properties properties = new Properties();
+        InputStream resource = new ClassPathResource("role.properties").getInputStream();
+        properties.load(resource);
+        return new CustomPermissionEvaluator(properties);
+    }
+
 }
